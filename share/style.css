@@ -1,0 +1,528 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================
+   BASE STYLE
+========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #f8fafc;
+    margin: 0;
+    min-height: 100vh;
+}
+
+main,
+section,
+footer {
+    animation: pageEnter 0.5s ease-out;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+}
+
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.glass-card {
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.03)
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border:
+    1px solid rgba(255,255,255,0.12);
+
+    border-radius: 24px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.25);
+
+}
+
+
+/* =========================
+   FORM LAYOUT
+========================= */
+
+.form-grid {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+    gap:18px;
+
+}
+
+
+.form-group {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+
+.label-text {
+
+    font-size:0.85rem;
+
+    font-weight:600;
+
+    color:#cbd5e1;
+
+    letter-spacing:.02em;
+
+}
+
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-field {
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    background:#020617;
+
+    border:
+    1px solid #334155;
+
+    border-radius:12px;
+
+    padding:
+    12px 14px;
+
+    color:white;
+
+    font-size:0.95rem;
+
+    outline:none;
+
+    transition:
+    border .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
+
+}
+
+
+.input-field:hover {
+
+    border-color:#475569;
+
+}
+
+
+.input-field:focus {
+
+    border-color:#3b82f6;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(59,130,246,.18);
+
+    transform:translateY(-1px);
+
+}
+
+
+/* Fix select alignment */
+
+select.input-field {
+
+    appearance:none;
+
+    cursor:pointer;
+
+}
+
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:
+    10px 20px;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+
+.btn:hover {
+
+    transform:translateY(-2px);
+
+}
+
+
+.btn-primary {
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+
+.btn-primary:hover {
+
+    background:#3b82f6;
+
+}
+
+
+
+.btn-secondary {
+
+    background:#334155;
+
+    color:white;
+
+}
+
+
+.btn-secondary:hover {
+
+    background:#475569;
+
+}
+
+
+/* Glass Toggle Buttons */
+
+.mode-btn {
+
+    padding:
+    10px 24px;
+
+    border-radius:14px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+    color:#cbd5e1;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+
+.mode-btn.active {
+
+    background:#2563eb;
+
+    color:white;
+
+    box-shadow:
+    0 8px 20px rgba(37,99,235,.35);
+
+}
+
+
+
+/* =========================
+   RESULT CARD
+========================= */
+
+
+.result-card {
+
+    background:
+    rgba(15,23,42,.65);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+    border-radius:20px;
+
+    padding:20px;
+
+}
+
+
+
+.result-row {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:
+    10px 0;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
+
+}
+
+
+.result-row:last-child {
+
+    border-bottom:none;
+
+}
+
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    width: min(95%, 72rem);
+    padding: 0.6rem 0.8rem;
+    transition: all 0.25s ease;
+}
+
+nav .max-w-6xl {
+    max-width: 100%;
+    height: 3.25rem;
+    padding: 0 0.25rem;
+}
+
+nav .max-w-6xl > span {
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+}
+
+#navToggle {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.55);
+    transition: all 0.2s ease;
+}
+
+#navToggle:hover {
+    border-color: rgba(96, 165, 250, 0.35);
+    color: #60a5fa;
+    background: rgba(30, 41, 59, 0.75);
+}
+
+#navMenu {
+    display: none;
+}
+
+#navMenu:not(.hidden) {
+    display: flex;
+}
+
+.nav-link {
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.1em;
+
+    color:#94a3b8;
+
+    text-decoration:none;
+
+    transition:.2s;
+
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+
+}
+
+
+.nav-link:hover,
+.nav-link.active {
+
+    color:white;
+    background: rgba(59, 130, 246, 0.16);
+
+}
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+
+.footer-text {
+
+    color:#64748b;
+
+    font-size:.8rem;
+
+}
+
+
+.footer-link {
+
+    color:#3b82f6;
+
+    text-decoration:none;
+
+    transition:.2s;
+
+}
+
+
+.footer-link:hover {
+
+    color:#60a5fa;
+
+    text-decoration:underline;
+
+}
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+
+@media(max-width:1024px){
+
+    .glass-card,
+    .result-card,
+    nav .max-w-6xl {
+        width:100%;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .form-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .glass-card {
+
+        border-radius:18px;
+
+    }
+
+    nav .max-w-6xl {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    nav .flex.gap-8 {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 1.5rem;
+    }
+
+    .result-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .input-field {
+        min-width: 0;
+    }
+
+    .max-w-6xl,
+    .max-w-3xl {
+        max-width: 100% !important;
+    }
+
+}
+
+@media(min-width:769px){
+    #navToggle {
+        display: none;
+    }
+
+    #navMenu {
+        display: flex;
+        position: static;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+    #navMenu .flex {
+        flex-direction: row;
+        gap: 0.4rem;
+        align-items: center;
+    }
+
+    
+}
+/* =========================
+

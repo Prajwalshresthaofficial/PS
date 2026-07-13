@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Prajwal Shrestha | CA Aspirant & Content Creator">
+    <meta name="description" content="Portfolio of Prajwal Shrestha, specializing in NEPSE financial analysis, transaction processing systems, and Pikha Lakhu cultural heritage documentation.">
+    <meta name="keywords" content="About Prajwal Shrestha, प्रज्वल श्रेष्ठ, About CA, ICAN, share tax calculator, share , Share Calculator, NEPSE, Web Developer, prajwal shrestha">
+    <meta name="author" content="Prajwal Shrestha">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prajwalshrestha2.com.np/tools">
+    <meta property="og:title" content="Prajwal Shrestha | Financial Analyst & Creator">
+    <meta property="og:description" content="Explore financial calculator tools for shares, income tax, loans, SIP, and WACC.">
+    <meta property="og:image" content="https://prajwalshrestha2.com.np/picture.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://prajwalshrestha2.com.np/tools">
+    <meta property="twitter:title" content="Prajwal Shrestha | Financial Analyst & Creator">
+    <meta property="twitter:description" content="Explore financial calculator tools for shares, income tax, loans, SIP, and WACC.">
+    <meta property="twitter:image" content="https://prajwalshrestha2.com.np/picture.jpg">
+    <link rel="icon" href="../fav.png">
+    <title>Tools | Prajwal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
+       <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+ {
+  "@type": "CollectionPage",
+  "@id": "https://prajwalshrestha2.com.np/tools/#webpage",
+  "url": "https://prajwalshrestha2.com.np/tools/",
+  "name": "Tools | Prajwal Shrestha",
+  "isPartOf": {
+    "@id": "https://prajwalshrestha2.com.np/#website"
+  },
+  "about": {
+    "@id": "https://prajwalshrestha2.com.np/#person"
+  }
+},
+  "knowsAbout": [
+    "Chartered Accountancy",
+    "CA Prajwal Shrestha",
+    "प्रज्वल श्रेष्ठ",
+    "CA Aspirant",
+    "Front-end Web Development",
+    "Financial Systems",
+    "React",
+    "Stock Market Analysis",
+    "Prajwal Shrestha"
+  ]
+  }
+</script>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+        
+        // Mobile nav toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+            min-height: 100vh;
+        }
+        
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        .nav-link {
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: #60a5fa;
+        }
+        
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+        
+        .tool-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            min-height: 180px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(10px) scale(0.98);
+        }
+        
+        .tool-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: 0;
+        }
+        
+        .tool-btn:hover::before {
+            left: 100%;
+        }
+        
+        .tool-btn > div {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-btn:hover {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4);
+        }
+        
+        .tool-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .tool-btn {
+                padding: 1.5rem 1rem;
+                min-height: 160px;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.25rem;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .tools-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        /* Staggered entrance delays for tool cards */
+        .tools-grid .tool-btn:nth-child(1) { animation-delay: 0.12s; }
+        .tools-grid .tool-btn:nth-child(2) { animation-delay: 0.24s; }
+        .tools-grid .tool-btn:nth-child(3) { animation-delay: 0.36s; }
+        .tools-grid .tool-btn:nth-child(4) { animation-delay: 0.48s; }
+        .tools-grid .tool-btn:nth-child(5) { animation-delay: 0.60s; }
+
+        /* Generic reveal-on-scroll (fallback for non-animated elements) */
+        .reveal-on-scroll { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+        .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        /* Trigger the pop animation when element becomes visible */
+        .tools-grid .tool-btn.visible { animation: tool-pop 0.9s cubic-bezier(0.2,0.8,0.2,1) both; }
+
+        /* Info panel slide animations */
+        .info-panel { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+        .info-panel.info-left { transform: translateX(-18px); }
+        .info-panel.info-right { transform: translateX(18px); }
+        .info-panel.visible { opacity: 1; transform: translateX(0) translateY(0); }
+
+        /* subtle checkmark pop */
+        .glass-card ul li span { display:inline-block; transform-origin: center; transition: transform 360ms ease; }
+        .info-panel.visible ul li span { transform: scale(1.05); }
+
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            transition: transform 420ms ease;
+        }
+
+        .tool-btn:hover .tool-icon {
+            transform: translateY(-6px) scale(1.06);
+        }
+
+        @keyframes tool-pop {
+            from { opacity: 0; transform: translateY(10px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .header-section {
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .grid-container {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .footer-section {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+        }
+    </style>
+
+    <style>
+    .page-loader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: radial-gradient(circle at top, rgba(37, 99, 235, 0.18), transparent 35%), #020617; transition: opacity 0.6s ease, visibility 0.6s ease; overflow: hidden; }
+    body.loader-complete .page-loader { opacity: 0; visibility: hidden; pointer-events: none; }
+    .page-loader__content { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1rem; padding: 1.5rem; transform: translateY(0); transition: transform 0.6s ease; }
+    body.loader-complete .page-loader__content { transform: translateY(10px) scale(0.96); }
+    .page-loader__logo { display: inline-flex; align-items: center; justify-content: center; width: clamp(44px, 11.5vw, 76px); aspect-ratio: 1 / 1; font-size: clamp(0.95rem, 3.2vw, 1.8rem); line-height: 1; font-weight: 800; letter-spacing: 0.12em; color: #60a5fa; background: rgba(255,255,255,0.04); border: 1px solid rgba(96,165,250,0.10); box-shadow: 0 10px 30px rgba(2,6,23,0.35); text-shadow: 0 0 18px rgba(96, 165, 250, 0.18); animation: loader-jump 1s cubic-bezier(.2,.8,.25,1) infinite; backdrop-filter: blur(6px); border-radius: 12px; padding: 0.04rem 0.28rem; box-sizing: border-box; }
+    .page-loader__text { position: relative; display: inline-block; font-size: clamp(0.95rem, 2.4vw, 1.25rem); font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; padding: 0.2rem 0.25rem; background: linear-gradient(90deg, rgba(147,197,253,0.95) 0%, rgba(147,197,253,0.95) 18%, rgba(255,255,255,0.28) 48%, rgba(147,197,253,0.95) 82%, rgba(147,197,253,0.95) 100%); background-size: 220% 100%; background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; animation: loader-shimmer 1.6s linear infinite, loader-text-pulse 1.6s ease-in-out infinite; }
+    @keyframes loader-jump { 0% { transform: translateY(0) scale(1); } 35% { transform: translateY(-12px) scale(1.02); } 65% { transform: translateY(4px) scale(0.99); } 100% { transform: translateY(0) scale(1); } }
+    @keyframes loader-shimmer { 0% { background-position: 180% 0; } 100% { background-position: -120% 0; } }
+    @keyframes loader-text-pulse { 0%, 100% { opacity: 0.9; } 50% { opacity: 1; } }
+    .loader-dots { display: inline-flex; gap: 0.22rem; align-items: flex-end; margin-left: 0.35rem; }
+    .loader-dots .dot { width: 8px; height: 8px; border-radius: 999px; background: linear-gradient(180deg, #60a5fa, #2563eb); box-shadow: 0 6px 18px rgba(96,165,250,0.18); transform-origin: center; animation: loader-dot-bounce 0.9s ease-in-out infinite; }
+    .loader-dots .dot:nth-child(1) { animation-delay: 0s; }
+    .loader-dots .dot:nth-child(2) { animation-delay: 0.12s; }
+    .loader-dots .dot:nth-child(3) { animation-delay: 0.24s; }
+    @keyframes loader-dot-bounce { 0% { transform: translateY(0); opacity: 1; } 40% { transform: translateY(-10px); opacity: 1; } 80% { transform: translateY(0); opacity: 0.9; } 100% { transform: translateY(0); opacity: 1; } }
+    @media (max-width: 640px) { .page-loader__logo { width: clamp(56px, 20vw, 96px); font-size: clamp(1.4rem, 7vw, 2.4rem); padding: 0.06rem 0.36rem; } }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-slate-200">
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading site">
+        <div class="page-loader__content">
+            <div class="page-loader__logo" aria-hidden="true">PR.</div>
+            <div style="display:inline-flex;align-items:center;gap:0.6rem;">
+                <div class="page-loader__text">Loading
+                    <span class="loader-dots" aria-hidden="true">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="fixed top-4 left-1/2 z-50 glass-card rounded-[2rem] border border-slate-800 px-4 py-3 max-w-6xl w-[95%] -translate-x-1/2 transform">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <span class="text-xl font-bold text-blue-400"><a href="/">PR.</a></span>
+            <button type="button" id="navToggle" class="md:hidden rounded-lg p-2 text-slate-300 hover:text-blue-400 focus:outline-none" aria-label="Toggle navigation">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <div id="navMenu" class="hidden absolute left-4 right-4 top-20 rounded-2xl border border-slate-800 bg-slate-950/95 p-4 shadow-xl md:static md:flex md:bg-transparent md:border-0 md:p-0 md:shadow-none">
+                <div class="flex flex-col gap-4 md:flex-row md:gap-8">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="./about/" class="nav-link">About</a>
+                    <a href="./tools/" class="nav-link active">Tools</a>
+                    <a href="./contact/" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header Section -->
+            <div class="header-section mb-16 text-center">
+                <p class="text-sm uppercase tracking-[0.3em] text-blue-400 font-semibold mb-4">Financial Tools</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Powerful Financial <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Calculators</span>
+                </h1>
+                <p class="text-base sm:text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                    Access a suite of professional financial calculators designed to help you make informed decisions about investments, taxes, loans, and wealth management.
+                </p>
+            </div>
+
+            <!-- Tools Grid -->
+            <div class="grid-container mb-16">
+                <div class="tools-grid">
+                    <!-- Share Calculator Button -->
+                    <a href="../share/" class="tool-btn group reveal-on-scroll">
+                        <div>
+                            <span class="tool-icon">📊</span>
+                            <p class="font-bold text-sm sm:text-base">Share Calculator</p>
+                            <p class="text-xs text-slate-300 group-hover:text-blue-100 transition">Share transactions</p>
+                        </div>
+                    </a>
+
+                    <!-- Nepal Income Tax Calculator Button -->
+                <a href="../incometax/" class="tool-btn group reveal-on-scroll">
+                    <div>
+                        <span class="tool-icon">🏛️</span>
+                        <p class="font-bold text-sm sm:text-base">Income Tax</p>
+                        <p class="text-xs text-slate-300 group-hover:text-blue-100 transition">Nepal income tax</p>
+                    </div>
+                </a>
+                    <!-- Loan / EMI Calculator Button -->
+                    <a href="../loan/" class="tool-btn group reveal-on-scroll">
+                        <div>
+                            <span class="tool-icon">💳</span>
+                            <p class="font-bold text-sm sm:text-base">Loan / EMI</p>
+                            <p class="text-xs text-slate-300 group-hover:text-blue-100 transition">Monthly EMI</p>
+                        </div>
+                    </a>
+
+                    <!-- SIP Calculator Button -->
+                    <a href="../sip/" class="tool-btn group reveal-on-scroll">
+                        <div>
+                            <span class="tool-icon">📈</span>
+                            <p class="font-bold text-sm sm:text-base">SIP Calculator</p>
+                            <p class="text-xs text-slate-300 group-hover:text-blue-100 transition">Investment returns</p>
+                        </div>
+                    </a>
+
+                    <!-- WACC Calculator Button -->
+                    <a href="../wacc/" class="tool-btn group reveal-on-scroll">
+                        <div>
+                            <span class="tool-icon">⚡</span>
+                            <p class="font-bold text-sm sm:text-base">WACC</p>
+                            <p class="text-xs text-slate-300 group-hover:text-blue-100 transition">Cost of capital</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="glass-card rounded-2xl p-8 sm:p-10">
+                <div class="grid sm:grid-cols-2 gap-8">
+                    <div class="info-panel info-left reveal-on-scroll">
+                        <h3 class="text-xl font-bold text-white mb-3">Why Use These Tools?</h3>
+                        <ul class="space-y-3 text-slate-400">
+                            <li class="flex items-start gap-3">
+                                <span class="text-blue-400 font-bold">✓</span>
+                                <span>Accurate calculations with real-time results</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-blue-400 font-bold">✓</span>
+                                <span>Designed for Nepal's financial context</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-blue-400 font-bold">✓</span>
+                                <span>Simple, intuitive interface</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info-panel info-right reveal-on-scroll">
+                        <h3 class="text-xl font-bold text-white mb-3">Coming Soon</h3>
+                        <p class="text-slate-400">
+                            More advanced calculators and financial planning tools are in development. Each calculator is crafted to provide comprehensive insights for your financial decisions. Check back soon for updates!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section border-t border-slate-800/50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-slate-400 text-sm">© 2026 Prajwal Shrestha. All rights reserved. | <a href="./terms/" class="text-blue-400 hover:text-blue-300">Terms & Conditions</a></p>
+        </div>
+    </footer>
+    <script>
+        // Reveal-on-scroll using IntersectionObserver
+        (function () {
+            function onLoad() {
+                const elems = document.querySelectorAll('.reveal-on-scroll');
+                if (!('IntersectionObserver' in window) || !elems.length) {
+                    elems.forEach(el => el.classList.add('visible'));
+                    return;
+                }
+
+                const obs = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+                        const el = entry.target;
+                        el.classList.add('visible');
+                        observer.unobserve(el);
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+                elems.forEach(el => obs.observe(el));
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', onLoad);
+            } else {
+                onLoad();
+            }
+        })();
+    </script>
+
+    <script>
+        window.addEventListener('load', function () {
+            const loader = document.getElementById('pageLoader');
+            if (!loader) return;
+            document.body.classList.add('loader-complete');
+            setTimeout(function () {
+                loader.remove();
+            }, 650);
+        });
+    </script>
+</body>
+</html>
+

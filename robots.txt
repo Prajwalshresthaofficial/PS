@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://prajwalshrestha2.com.np/sitemap.xml
+Host: prajwalshrestha2.com.np
