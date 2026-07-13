@@ -93,7 +93,7 @@
 
     <main class="pt-40 pb-12 px-6 max-w-4xl mx-auto">
         <article>
-            <header class="mb-8">
+            <header class="mb-8 scroll-reveal">
                 <p class="text-blue-400 uppercase tracking-[0.3em] text-sm mb-4">📖 Study Guide • 8 min read</p>
                 <h1 class="text-5xl font-bold mb-4">Mastering Accounting Standards for CA Final</h1>
                 <p class="text-slate-400 text-lg">My journey understanding NAS - what worked, what didn't, and how I stopped getting confused.</p>
@@ -101,14 +101,14 @@
             </header>
 
             <div class="prose prose-invert max-w-none space-y-6">
-                <section>
+                <section class="scroll-reveal">
                     <h2 class="text-3xl font-bold mt-8 mb-4">The Confusion Begins</h2>
                     <p class="text-slate-300 leading-relaxed">
                         When I first opened the NAS module, I felt overwhelmed. There are so many standards - NAS 1, NAS 2, NAS 8... I thought I had to memorize every word. But after struggling for weeks, I realized that wasn't the right approach. Let me share what actually helped me.
                     </p>
                 </section>
 
-                <section>
+                <section class="scroll-reveal">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Understanding vs. Memorizing</h2>
                     <div class="bg-slate-800/50 border-l-4 border-blue-400 p-4 mb-4">
                         <p class="text-slate-200 italic">The biggest mistake I made: trying to memorize standards instead of understanding concepts.</p>
@@ -124,7 +124,7 @@
                     </ul>
                 </section>
 
-                <section>
+                <section class="scroll-reveal">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Standards That Confused Me Most</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">Here are the ones I struggled with and my shortcuts:</p>
                     
@@ -147,7 +147,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-reveal">
                     <h2 class="text-3xl font-bold mt-8 mb-4">My Study Strategy That Worked</h2>
                     <ol class="list-decimal pl-6 space-y-3 text-slate-300">
                         <li><strong>Read the standard once (Overview):</strong> Don't worry about understanding everything. Just know what's there.</li>
@@ -159,7 +159,7 @@
                     </ol>
                 </section>
 
-                <section class="bg-blue-500/10 border border-blue-500/30 p-6 rounded-lg mt-8">
+                <section class="bg-blue-500/10 border border-blue-500/30 p-6 rounded-lg mt-8 scroll-reveal">
                     <h2 class="text-2xl font-bold mb-4">📏 Key Takeaways for You</h2>
                     <ul class="space-y-2 text-slate-200">
                         <li>✓ Understand the principle, not just the rule</li>
@@ -170,7 +170,7 @@
                     </ul>
                 </section>
 
-                <section class="mt-8 pt-8 border-t border-slate-700">
+                <section class="mt-8 pt-8 border-t border-slate-700 scroll-reveal">
                     <h2 class="text-2xl font-bold mb-4">What Worked For You?</h2>
                     <p class="text-slate-300 mb-4">
                         I'm curious about your experience with Accounting Standards. What confuses you most? What study method helped you?
@@ -192,6 +192,26 @@
         .prose h2 { color: #60a5fa; }
         .prose strong { color: #f8fafc; }
         .prose ul, .prose ol { color: #cbd5e1; }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal:nth-child(odd) {
+            transition-delay: 0.06s;
+        }
+
+        .scroll-reveal:nth-child(even) {
+            transition-delay: 0.12s;
+        }
     </style>
 
     <script>
@@ -202,6 +222,22 @@
             setTimeout(function () {
                 loader.remove();
             }, 650);
+
+            const scrollItems = document.querySelectorAll('.scroll-reveal');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.18 });
+
+                scrollItems.forEach((item) => observer.observe(item));
+            } else {
+                scrollItems.forEach((item) => item.classList.add('active'));
+            }
         });
     </script>
 </body>

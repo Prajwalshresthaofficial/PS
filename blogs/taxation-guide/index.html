@@ -50,6 +50,7 @@
   }
 </script>
     <style>
+    html { scroll-behavior: smooth; }
     .page-loader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: radial-gradient(circle at top, rgba(37, 99, 235, 0.18), transparent 35%), #020617; transition: opacity 0.6s ease, visibility 0.6s ease; overflow: hidden; }
     body.loader-complete .page-loader { opacity: 0; visibility: hidden; pointer-events: none; }
     .page-loader__content { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1rem; padding: 1.5rem; transform: translateY(0); transition: transform 0.6s ease; }
@@ -66,6 +67,22 @@
     .loader-dots .dot:nth-child(3) { animation-delay: 0.24s; }
     @keyframes loader-dot-bounce { 0% { transform: translateY(0); opacity: 1; } 40% { transform: translateY(-10px); opacity: 1; } 80% { transform: translateY(0); opacity: 0.9; } 100% { transform: translateY(0); opacity: 1; } }
     @media (max-width: 640px) { .page-loader__logo { width: clamp(56px, 20vw, 96px); font-size: clamp(1.4rem, 7vw, 2.4rem); padding: 0.06rem 0.36rem; } }
+
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .scroll-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    .scroll-reveal.delay-150 { transition-delay: 0.15s; }
+    .scroll-reveal.delay-250 { transition-delay: 0.25s; }
+    .scroll-reveal.delay-350 { transition-delay: 0.35s; }
     </style>
 </head>
 <body class="bg-[#0f172a] text-white">
@@ -92,7 +109,7 @@
 
     <main class="pt-40 pb-12 px-6 max-w-4xl mx-auto">
         <article>
-            <header class="mb-8">
+            <header class="mb-8 scroll-reveal">
                 <p class="text-blue-400 uppercase tracking-[0.3em] text-sm mb-4">⚖️ Taxation • 7 min read</p>
                 <h1 class="text-5xl font-bold mb-4">Income Tax Laws: CA Final Exam Focus Areas</h1>
                 <p class="text-slate-400 text-lg">From a CA student's desk: The taxation concepts that show up in exams and how I'm tackling them.</p>
@@ -100,14 +117,14 @@
             </header>
 
             <div class="prose prose-invert max-w-none space-y-6">
-                <section>
+                <section class="scroll-reveal">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Why This Matters</h2>
                     <p class="text-slate-300 leading-relaxed">
                         Taxation is a CA final subject, and honestly? It can feel like information overload. So many provisions, amendments, and exceptions. But here's what I've realized: You don't need to memorize everything. You need to understand the structure and key provisions. Let me share what's clicking for me.
                     </p>
                 </section>
 
-                <section>
+                <section class="scroll-reveal delay-150">
                     <h2 class="text-3xl font-bold mt-8 mb-4">The Basic Structure (Start Here)</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">
                         Income tax has this flow. Understanding this structure helped me organize everything:
@@ -131,29 +148,29 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-reveal delay-250">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Key Areas I'm Focusing On</h2>
                     
                     <div class="space-y-4">
-                        <div class="bg-slate-800 p-4 rounded-lg border border-blue-500/30">
+                        <div class="scroll-reveal delay-150 bg-slate-800 p-4 rounded-lg border border-blue-500/30">
                             <h3 class="text-lg font-semibold text-blue-300 mb-2">1️⃣ Salary Provisions</h3>
                             <p class="text-slate-300 text-sm mb-2"><strong>What I was confused about:</strong> Perquisites, leave encashment, gratuity</p>
                             <p class="text-slate-300 text-sm"><strong>Concept:</strong> Not all salary components are taxable. Some are exempt. Memorizing which is which took time, but doing 10+ problems helped.</p>
                         </div>
                         
-                        <div class="bg-slate-800 p-4 rounded-lg border border-blue-500/30">
+                        <div class="scroll-reveal delay-250 bg-slate-800 p-4 rounded-lg border border-blue-500/30">
                             <h3 class="text-lg font-semibold text-blue-300 mb-2">2️⃣ House Property</h3>
                             <p class="text-slate-300 text-sm mb-2"><strong>What I was confused about:</strong> When to deduct interest, when to claim depreciation</p>
                             <p class="text-slate-300 text-sm"><strong>Concept:</strong> Self-occupied property has different rules than let-out property. I made a simple table with both scenarios.</p>
                         </div>
                         
-                        <div class="bg-slate-800 p-4 rounded-lg border border-blue-500/30">
+                        <div class="scroll-reveal delay-350 bg-slate-800 p-4 rounded-lg border border-blue-500/30">
                             <h3 class="text-lg font-semibold text-blue-300 mb-2">3️⃣ Business Income & Deductions</h3>
                             <p class="text-slate-300 text-sm mb-2"><strong>What I was confused about:</strong> What expenses are allowed, what are not</p>
                             <p class="text-slate-300 text-sm"><strong>Concept:</strong> Golden rule: Must be incurred for earning income. Personal expenses? No. Business expenses? Yes. Practice questions clarify this fast.</p>
                         </div>
                         
-                        <div class="bg-slate-800 p-4 rounded-lg border border-blue-500/30">
+                        <div class="scroll-reveal delay-350 bg-slate-800 p-4 rounded-lg border border-blue-500/30">
                             <h3 class="text-lg font-semibold text-blue-300 mb-2">4️⃣ Capital Gains</h3>
                             <p class="text-slate-300 text-sm mb-2"><strong>What I was confused about:</strong> Short-term vs. long-term, indexation benefits</p>
                             <p class="text-slate-300 text-sm"><strong>Concept:</strong> Holding period changes everything. Less than 2 years = short-term (higher tax). More than 2 years = long-term (lower tax + indexation benefits).</p>
@@ -161,7 +178,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-reveal delay-150">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Common Exam Mistakes I'm Avoiding</h2>
                     <ul class="list-disc pl-6 space-y-2 text-slate-300">
                         <li><strong>Reading too fast:</strong> Tax problems have details. If I miss one number, the whole answer changes.</li>
@@ -171,7 +188,7 @@
                     </ul>
                 </section>
 
-                <section>
+                <section class="scroll-reveal delay-250">
                     <h2 class="text-3xl font-bold mt-8 mb-4">How I'm Studying Taxation</h2>
                     <ol class="list-decimal pl-6 space-y-3 text-slate-300">
                         <li>Read the concept and provision once (overview)</li>
@@ -183,7 +200,7 @@
                     </ol>
                 </section>
 
-                <section class="bg-yellow-500/10 border border-yellow-500/30 p-6 rounded-lg mt-8">
+                <section class="scroll-reveal delay-350 bg-yellow-500/10 border border-yellow-500/30 p-6 rounded-lg mt-8">
                     <h2 class="text-2xl font-bold mb-4">📚 Resource I'm Using</h2>
                     <ul class="space-y-2 text-slate-200">
                         <li>✓ CA textbook (official source)</li>
@@ -194,7 +211,7 @@
                     </ul>
                 </section>
 
-                <section class="mt-8 pt-8 border-t border-slate-700">
+                <section class="scroll-reveal delay-150 mt-8 pt-8 border-t border-slate-700">
                     <h2 class="text-2xl font-bold mb-4">Let's Learn Together</h2>
                     <p class="text-slate-300 mb-4">
                         What taxation topic confuses you? Which provision keeps tripping you up? Let me know - maybe I can create a deeper guide on it.
@@ -208,7 +225,7 @@
         </article>
     </main>
 
-    <footer class="py-12 border-t border-slate-800/50 text-center mt-20">
+    <footer class="py-12 border-t border-slate-800/50 text-center mt-20 scroll-reveal delay-250">
         <p class="text-slate-500 text-sm">© Prajwal Shrestha 2026. <a href="/terms/" class="text-blue-400 hover:underline">Terms & Conditions</a></p>
     </footer>
 
@@ -227,6 +244,18 @@
                 loader.remove();
             }, 650);
         });
+
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.18 });
+
+        revealElements.forEach((el) => revealObserver.observe(el));
     </script>
 </body>
 </html>

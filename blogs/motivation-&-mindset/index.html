@@ -70,6 +70,10 @@
     .loader-dots .dot:nth-child(2) { animation-delay: 0.12s; }
     .loader-dots .dot:nth-child(3) { animation-delay: 0.24s; }
     @keyframes loader-dot-bounce { 0% { transform: translateY(0); opacity: 1; } 40% { transform: translateY(-10px); opacity: 1; } 80% { transform: translateY(0); opacity: 0.9; } 100% { transform: translateY(0); opacity: 1; } }
+    .scroll-animate { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease-out, transform 0.75s ease-out; will-change: opacity, transform; }
+    .scroll-animate.visible { opacity: 1; transform: translateY(0); }
+    .scroll-animate.delay-1 { transition-delay: 0.08s; }
+    .scroll-animate.delay-2 { transition-delay: 0.16s; }
     @media (max-width: 640px) { .page-loader__logo { width: clamp(56px, 20vw, 96px); font-size: clamp(1.4rem, 7vw, 2.4rem); padding: 0.06rem 0.36rem; } }
     </style>
 </head>
@@ -97,7 +101,7 @@
 
     <main class="pt-40 pb-12 px-6 max-w-4xl mx-auto">
         <article>
-            <header class="mb-8">
+            <header class="mb-8 scroll-animate">
                 <p class="text-blue-400 uppercase tracking-[0.3em] text-sm mb-4">🎯 Motivation & Mindset • 8 min read</p>
                 <h1 class="text-5xl font-bold mb-4">Staying Self-Motivated During CA Exam Prep</h1>
                 <p class="text-slate-400 text-lg">Real strategies I use to keep going when motivation dips, exams feel overwhelming, and the finish line seems far away.</p>
@@ -105,14 +109,14 @@
             </header>
 
             <div class="prose prose-invert max-w-none space-y-6">
-                <section>
+                <section class="scroll-animate">
                     <h2 class="text-3xl font-bold mt-8 mb-4">The Motivation Rollercoaster</h2>
                     <p class="text-slate-300 leading-relaxed">
                         Real talk: CA exam preparation is a rollercoaster. Some days I'm pumped up, finishing chapters and solving practice problems. Other days, I open a book and think "What's the point?" The difference between people who pass and those who don't isn't just intelligence - it's staying motivated when things get hard. Here's what actually keeps me going.
                     </p>
                 </section>
 
-                <section>
+                <section class="scroll-animate">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Tip 1: Connect Your "Why"</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">
                         The biggest mistake I made early: trying to study just to pass the exam. That's not enough fuel. When I hit difficult chapters, that motivation disappears instantly.
@@ -129,7 +133,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-animate">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Tip 2: Track Small Wins</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">
                         When you're studying for 2 years, the end goal feels impossibly far. Small wins are your fuel.
@@ -146,7 +150,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-animate">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Tip 3: Study With Purpose, Not Hours</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">
                         I used to measure success by hours studied. "I studied 10 hours today, great!" Reality: I was procrastinating, scrolling, and not focused.
@@ -163,7 +167,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-animate">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Tip 4: The 2-Day Rule</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">
                         Some days, I don't feel like studying. That's normal. Here's what I do:
@@ -176,7 +180,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-animate">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Tip 5: Study With Others Sometimes</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">
                         I'm an introvert. I prefer studying alone. But completely solo studying? I got lazy and depressed.
@@ -193,7 +197,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-animate">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Tip 6: Celebrate Before Exams</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">
                         This sounds weird, but: I celebrate small wins BEFORE exams, not after.
@@ -206,7 +210,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="scroll-animate">
                     <h2 class="text-3xl font-bold mt-8 mb-4">Tip 7: When Motivation Really Dips</h2>
                     <p class="text-slate-300 leading-relaxed mb-4">
                         Sometimes these tips aren't enough. Some weeks, I just feel stuck. Here's what I do:
@@ -234,7 +238,7 @@
                     </div>
                 </section>
 
-                <section class="bg-purple-500/10 border border-purple-500/30 p-6 rounded-lg mt-8">
+                <section class="scroll-animate bg-purple-500/10 border border-purple-500/30 p-6 rounded-lg mt-8">
                     <h2 class="text-2xl font-bold mb-4">💡 The Real Secret</h2>
                     <p class="text-slate-200 leading-relaxed">
                         Motivation isn't something that happens to you. It's something you build. Day after day. Small decisions. Showing up even when you don't feel like it. Celebrating progress. Connecting your studies to your goals.
@@ -244,7 +248,7 @@
                     </p>
                 </section>
 
-                <section class="mt-8 pt-8 border-t border-slate-700">
+                <section class="scroll-animate mt-8 pt-8 border-t border-slate-700">
                     <h2 class="text-2xl font-bold mb-4">What Keeps YOU Motivated?</h2>
                     <p class="text-slate-300 mb-4">
                         Everyone's motivation looks different. What's your trick? How do you stay fired up when studying gets hard? I'd love to hear from other CA aspirants.
@@ -276,6 +280,23 @@
             setTimeout(function () {
                 loader.remove();
             }, 650);
+
+            const revealItems = document.querySelectorAll('.scroll-animate');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            revealItems.forEach((item, index) => {
+                if (index % 2 === 0) item.classList.add('delay-1');
+                revealObserver.observe(item);
+            });
         });
     </script>
 </body>

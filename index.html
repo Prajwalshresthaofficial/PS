@@ -1049,6 +1049,192 @@
                 box-shadow: 0 16px 30px rgba(37, 99, 235, 0.25);
             }
         }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        html.modal-open,
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        #welcomePopup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100000;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(24px);
+            padding: 1.25rem;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 280ms ease, visibility 280ms ease;
+        }
+
+        #welcomePopup.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        #welcomePopup .welcome-popup__panel {
+            position: relative;
+            width: min(100%, 520px);
+            background: rgba(15, 23, 42, 0.95);
+            border: 3px solid rgba(96, 165, 250, 0.95);
+            border-radius: 2rem;
+            box-shadow: 0 44px 140px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            padding: 2rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px) scale(0.98);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+            min-height: 240px;
+        }
+
+        #welcomePopup.open .welcome-popup__panel {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .welcome-popup__panel::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 1.75rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(59, 130, 246, 0) 45%, rgba(236, 72, 153, 0.12));
+            filter: blur(16px);
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        .welcome-popup__panel > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2.3rem;
+            height: 2.3rem;
+            border: none;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.88);
+            color: #cbd5e1;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+            z-index: 2;
+        }
+
+        .welcome-popup-close:hover {
+            background: rgba(59, 130, 246, 0.16);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .welcome-popup-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #dbeafe;
+            background: rgba(59, 130, 246, 0.16);
+            border: 1px solid rgba(59, 130, 246, 0.22);
+            animation: badge-pop 1.2s ease-out;
+        }
+
+        .welcome-popup-title {
+            font-size: clamp(1.75rem, 2.5vw, 2.3rem);
+            line-height: 1.08;
+            margin: 0 0 1rem;
+            color: #eef2ff;
+            font-weight: 800;
+            animation: title-pop 0.7s ease-out;
+        }
+
+        .welcome-popup-text {
+            margin: 0 auto 1.75rem;
+            max-width: 29rem;
+            color: #cbd5e1;
+            line-height: 1.75;
+            animation: text-fade 0.8s ease-out;
+        }
+
+        .welcome-popup-button {
+            min-width: 160px;
+            border: none;
+            border-radius: 999px;
+            padding: 0.95rem 1.5rem;
+            background: linear-gradient(135deg, #3b82f6, #38bdf8);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 240ms ease, box-shadow 240ms ease, filter 240ms ease;
+        }
+
+        .welcome-popup-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 32px rgba(59, 130, 246, 0.25);
+        }
+
+        .confetti-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 999px;
+            opacity: 0.95;
+            will-change: transform, opacity;
+        }
+
+        @keyframes confetti-blast {
+            from { transform: translateY(0) rotate(0deg); opacity: 1; }
+            to { transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; }
+        }
+
+        @keyframes badge-pop {
+            0% { transform: translateY(6px) scale(0.92); opacity: 0; }
+            70% { transform: translateY(-2px) scale(1.02); opacity: 1; }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        @keyframes title-pop {
+            0% { opacity: 0; transform: translateY(14px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes text-fade {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popup-appear {
+            from { opacity: 0; transform: translateY(-18px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
     </style>
 </head>
 <body class="bg-[#0f172a] text-white">
@@ -1072,6 +1258,16 @@
             <h2 id="mobileNoticeTitle" class="mobile-notice__title">Better on PC for best performance</h2>
             <p id="mobileNoticeText" class="mobile-notice__text">This site is best experienced on a desktop or laptop. For faster loading and a smoother experience, please use a PC when possible.</p>
             <button id="mobileNoticeClose" class="mobile-notice__button" type="button">Continue on mobile</button>
+        </div>
+    </div>
+
+    <div id="welcomePopup" class="welcome-popup" role="dialog" aria-modal="true" aria-labelledby="welcomePopupTitle" aria-describedby="welcomePopupText" style="position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,0.94);display:grid;place-items:center;padding:1.25rem;">
+        <div class="welcome-popup__panel" style="position:relative;width:min(100%,520px);background:rgba(15,23,42,0.96);border:2px solid rgba(96,165,250,0.9);border-radius:2rem;box-shadow:0 36px 120px rgba(0,0,0,0.65);padding:2rem 2rem;">
+            <div id="confettiContainer" class="confetti-container"></div>
+            <div class="welcome-popup-badge">New Update</div>
+            <h2 id="welcomePopupTitle" class="welcome-popup-title">Welcome back!</h2>
+            <p id="welcomePopupText" class="welcome-popup-text">Enjoy the latest improvements with a smoother layout, faster access, and updated tools designed to help you learn and plan better.</p>
+            <button id="welcomePopupClose" class="welcome-popup-button" type="button">Explore now</button>
         </div>
     </div>
 
@@ -1106,7 +1302,7 @@
                 <div class="mobile-hero-links">
                     <a href="https://linkedin.com/in/prajwalshresthaaa" target="_blank" aria-label="LinkedIn profile">in</a>
                     <a href="https://youtube.com/@Prajwalshresthaa" target="_blank" aria-label="YouTube channel">▶</a>
-                    <a href="./share/" aria-label="Share calculator">Σ</a>
+                    <a href="./tax/" aria-label="Share calculator">Σ</a>
                     <a href="./contact/" aria-label="Contact page">✉</a>
                 </div>
                 <div class="mobile-hero-contact">
@@ -1355,6 +1551,81 @@
                     sessionStorage.setItem('mobileNoticeDismissed', 'true');
                 });
             }
+        }
+
+        const welcomePopup = document.getElementById('welcomePopup');
+        const welcomeClose = document.getElementById('welcomePopupClose');
+        const welcomeDismiss = document.getElementById('welcomePopupDismiss');
+        const pageHtml = document.documentElement;
+        const pageBody = document.body;
+
+        function openWelcomePopup() {
+            if (!welcomePopup) return;
+            welcomePopup.classList.add('open');
+            pageHtml.classList.add('modal-open');
+            pageBody.classList.add('modal-open');
+            blastConfetti();
+        }
+
+        function closeWelcomePopup() {
+            if (!welcomePopup) return;
+            welcomePopup.classList.remove('open');
+            pageHtml.classList.remove('modal-open');
+            pageBody.classList.remove('modal-open');
+            localStorage.setItem('welcomePopupDismissed', 'true');
+        }
+
+        function blastConfetti() {
+            const container = document.getElementById('confettiContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const colors = ['#60a5fa', '#f97316', '#facc15', '#22c55e', '#ec4899', '#a855f7'];
+            const count = 70;
+
+            for (let i = 0; i < count; i++) {
+                const piece = document.createElement('span');
+                piece.className = 'confetti-piece';
+                piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                const x = Math.floor(Math.random() * 260) - 130 + 'px';
+                const y = Math.floor(Math.random() * 260) - 120 + 'px';
+                const r = Math.floor(Math.random() * 720) + 'deg';
+                piece.style.setProperty('--x', x);
+                piece.style.setProperty('--y', y);
+                piece.style.setProperty('--r', r);
+                const duration = (Math.random() * 0.8 + 1.2).toFixed(2) + 's';
+                const delay = (Math.random() * 0.2).toFixed(2) + 's';
+                piece.style.animation = `confetti-blast ${duration} ease-out ${delay} forwards`;
+                piece.style.left = '50%';
+                piece.style.top = '50%';
+                piece.style.transform = 'translate(-50%, -50%)';
+                container.appendChild(piece);
+                setTimeout(() => piece.remove(), 2200);
+            }
+        }
+
+        if (welcomePopup) {
+            const dismissed = localStorage.getItem('welcomePopupDismissed');
+            if (!dismissed) {
+                openWelcomePopup();
+            }
+            welcomePopup.addEventListener('click', function (event) {
+                if (event.target === welcomePopup) {
+                    closeWelcomePopup();
+                }
+            });
+        }
+
+        if (welcomeClose) {
+            welcomeClose.addEventListener('click', function () {
+                closeWelcomePopup();
+            });
+        }
+
+        if (welcomeDismiss) {
+            welcomeDismiss.addEventListener('click', function () {
+                closeWelcomePopup();
+            });
         }
     });
 </script>
