@@ -12,8 +12,15 @@
   box-sizing: border-box;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -28,6 +35,22 @@ body {
   min-height: 100vh;
   background: linear-gradient(135deg, #020617, #0f172a);
   color: var(--gallery-text);
+  width: 100%;
+  max-width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe,
+embed,
+object {
+  max-width: 100%;
+  display: block;
+  height: auto;
 }
 
 ::-webkit-scrollbar {

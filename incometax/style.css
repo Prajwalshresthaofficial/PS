@@ -6,12 +6,18 @@
     box-sizing: border-box;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-text-size-adjust: 100%;
     background: #020617;
+    width: 100%;
+    max-width: 100%;
 }
 
 body {
@@ -20,6 +26,22 @@ body {
     opacity: 0;
     transition: opacity 280ms ease;
     background: #020617;
+    width: 100%;
+    max-width: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe,
+embed,
+object {
+    max-width: 100%;
+    display: block;
+    height: auto;
 }
 
 body.is-ready {

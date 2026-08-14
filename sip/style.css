@@ -6,10 +6,33 @@
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background-image: radial-gradient( circle at 10% 10%, rgba(59,130,246,0.04), transparent 10% ), radial-gradient( circle at 90% 90%, rgba(99,102,241,0.03), transparent 12% );
     animation: bodyGlow 18s ease infinite alternate;
     background-size: 120% 120%;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe,
+embed,
+object {
+    max-width: 100%;
+    display: block;
+    height: auto;
 }
 
 [x-cloak] {
@@ -380,7 +403,36 @@ select.input-field option:checked {
 .back-to-top svg { width: 18px; height: 18px; }
 
 @media (max-width: 768px) {
-    .glass-card { padding: 1rem !important; }
+    html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe,
+embed,
+object {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+.glass-card { padding: 1rem !important; }
     .btn-calculate { width: 100% !important; }
     .breakdown-card { gap: 0.5rem !important; }
     .back-to-top { display: flex !important; }

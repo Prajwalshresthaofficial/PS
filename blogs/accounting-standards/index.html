@@ -68,6 +68,7 @@
     @keyframes loader-dot-bounce { 0% { transform: translateY(0); opacity: 1; } 40% { transform: translateY(-10px); opacity: 1; } 80% { transform: translateY(0); opacity: 0.9; } 100% { transform: translateY(0); opacity: 1; } }
     @media (max-width: 640px) { .page-loader__logo { width: clamp(56px, 20vw, 96px); font-size: clamp(1.4rem, 7vw, 2.4rem); padding: 0.06rem 0.36rem; } }
     </style>
+    <script src="/offline-detection.js"></script>
 </head>
 <body class="bg-[#0f172a] text-white">
     <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading site">
@@ -182,6 +183,25 @@
                 </section>
             </div>
         </article>
+
+        <section id="eyeCareReminder" class="fixed inset-0 hidden flex items-center justify-center z-50 p-4">
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="eyeCareBackdrop"></div>
+            <div class="relative bg-gradient-to-r from-blue-900 to-indigo-900 border-2 border-blue-500 rounded-lg sm:rounded-xl p-6 sm:p-8 max-w-sm sm:max-w-md shadow-2xl animate-pulse-glow">
+                <button id="closeEyeCareReminder" class="absolute top-3 sm:top-4 right-3 sm:right-4 text-white hover:text-blue-300 text-2xl transition">×</button>
+                <div class="flex flex-col items-center text-center gap-4 sm:gap-6">
+                    <span class="text-5xl sm:text-6xl">👁️</span>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-blue-300 mb-2 sm:mb-3">Eye Care Break!</h3>
+                        <p class="text-white leading-relaxed text-sm sm:text-base">
+                            You've been reading for a while! Look at something 20 feet away for 20 seconds. Adjust your screen brightness, maintain proper distance (24-28 inches), and stay hydrated. 🌟
+                        </p>
+                    </div>
+                    <button id="dismissEyeCareReminder" class="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition transform hover:scale-105 active:scale-95 text-sm sm:text-base">
+                        Got it!
+                    </button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="py-12 border-t border-slate-800/50 text-center mt-20">
@@ -239,6 +259,60 @@
                 scrollItems.forEach((item) => item.classList.add('active'));
             }
         });
+    </script>
+
+    <script>
+        // Show eye care reminder after 5 seconds of being on the page
+        setTimeout(function () {
+            const eyeCareReminder = document.getElementById('eyeCareReminder');
+            if (eyeCareReminder) {
+                eyeCareReminder.classList.remove('hidden');
+                eyeCareReminder.style.animation = 'fadeIn 0.5s ease-in';
+            }
+        }, 5 * 60 * 1000); // 5 minutes in milliseconds
+
+        // Close button handlers
+        const closeBtn = document.getElementById('closeEyeCareReminder');
+        const dismissBtn = document.getElementById('dismissEyeCareReminder');
+        const eyeCareReminder = document.getElementById('eyeCareReminder');
+        const eyeCareBackdrop = document.getElementById('eyeCareBackdrop');
+
+        const closeReminder = function () {
+            if (eyeCareReminder) {
+                eyeCareReminder.classList.add('hidden');
+            }
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeReminder);
+        if (dismissBtn) dismissBtn.addEventListener('click', closeReminder);
+        if (eyeCareBackdrop) eyeCareBackdrop.addEventListener('click', closeReminder);
+
+        // Add fade-in animation and glow effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            @keyframes pulse-glow {
+                0%, 100% {
+                    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+                }
+                50% {
+                    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+                }
+            }
+            .animate-pulse-glow {
+                animation: pulse-glow 2s ease-in-out infinite;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

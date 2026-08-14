@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline | Prajwal Shrestha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="fav.png">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .glass-effect {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 to-slate-800 text-white min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4">
+        <!-- Header Section -->
+        <div class="text-center mb-12">
+            <div class="mb-6">
+                <svg class="w-20 h-20 mx-auto text-green-400 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">You're Online</h1>
+            <p class="text-slate-400 text-lg">Welcome back! All features are available and your connection is stable.</p>
+        </div>
+
+        <!-- Status & Help -->
+        <div class="glass-effect rounded-2xl p-8 text-center mb-12" id="connection-status">
+            <div class="mb-4">
+                <p class="text-slate-400 mb-2">📡 Internet Connection Status</p>
+                <p class="text-lg font-semibold text-red-400" id="status-indicator">🔴 Currently Offline</p>
+            </div>
+            <div class="mt-6 pt-6 border-t border-slate-700">
+                <p class="text-sm text-slate-500 mb-3" id="status-message">Waiting for internet connection to restore...</p>
+                <p class="text-xs text-slate-600">Your connection will be detected automatically and you'll be redirected immediately.</p>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="glass-effect rounded-2xl p-8 mb-8">
+            <h2 class="text-2xl font-bold text-blue-400 mb-4 flex items-center gap-3">
+                <span class="h-px w-8 bg-blue-400"></span> About Prajwal
+            </h2>
+            <div class="space-y-4 text-slate-300">
+                <p>
+                    <strong>Prajwal Shrestha</strong> is a dedicated CA aspirant under the Institute of Chartered Accountants of Nepal (ICAN), with a strong focus on accounting, finance, and business management.
+                </p>
+                <p>
+                    Pursuing continuous learning and professional excellence, Prajwal specializes in financial systems, stock market analysis, and digital content creation.
+                </p>
+                <p>
+                    <span class="text-slate-400">Location:</span> Kathmandu, Nepal 🇳🇵
+                </p>
+            </div>
+        </div>
+
+        <!-- Expertise Section -->
+        <div class="glass-effect rounded-2xl p-8 mb-8">
+            <h2 class="text-2xl font-bold text-blue-400 mb-6 flex items-center gap-3">
+                <span class="h-px w-8 bg-blue-400"></span> Areas of Expertise
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-blue-500/20">
+                    <h3 class="font-semibold text-blue-300 mb-2">📊 Finance & Accounting</h3>
+                    <p class="text-sm text-slate-400">Chartered Accountancy, Stock Market Analysis (NEPSE), Tax Tools</p>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-blue-500/20">
+                    <h3 class="font-semibold text-blue-300 mb-2">💻 Web Development</h3>
+                    <p class="text-sm text-slate-400">Front-end Development, React, Financial Systems Design</p>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-blue-500/20">
+                    <h3 class="font-semibold text-blue-300 mb-2">📈 Content Creation</h3>
+                    <p class="text-sm text-slate-400">Financial Education, Market Insights, YouTube Channel</p>
+                </div>
+                <div class="bg-slate-900/50 rounded-lg p-4 border border-blue-500/20">
+                    <h3 class="font-semibold text-blue-300 mb-2">🏛️ Heritage Documentation</h3>
+                    <p class="text-sm text-slate-400">Pikha Lakhu Cultural Architecture Preservation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Available Offline -->
+        <div class="glass-effect rounded-2xl p-8 mb-8">
+            <h2 class="text-2xl font-bold text-blue-400 mb-6 flex items-center gap-3">
+                <span class="h-px w-8 bg-blue-400"></span> Tools Available Offline
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="/share/" class="bg-slate-900/50 hover:bg-slate-900/80 rounded-lg p-4 border border-slate-700 hover:border-blue-500/50 transition text-center">
+                    <div class="text-2xl mb-2">📈</div>
+                    <p class="font-semibold text-blue-300">Share Calculator</p>
+                </a>
+                <a href="/sip/" class="bg-slate-900/50 hover:bg-slate-900/80 rounded-lg p-4 border border-slate-700 hover:border-blue-500/50 transition text-center">
+                    <div class="text-2xl mb-2">💰</div>
+                    <p class="font-semibold text-blue-300">SIP Calculator</p>
+                </a>
+                <a href="/incometax/" class="bg-slate-900/50 hover:bg-slate-900/80 rounded-lg p-4 border border-slate-700 hover:border-blue-500/50 transition text-center">
+                    <div class="text-2xl mb-2">📊</div>
+                    <p class="font-semibold text-blue-300">Income Tax Tool</p>
+                </a>
+                <a href="/loan/" class="bg-slate-900/50 hover:bg-slate-900/80 rounded-lg p-4 border border-slate-700 hover:border-blue-500/50 transition text-center">
+                    <div class="text-2xl mb-2">🏦</div>
+                    <p class="font-semibold text-blue-300">Loan Calculator</p>
+                </a>
+                <a href="/wacc/" class="bg-slate-900/50 hover:bg-slate-900/80 rounded-lg p-4 border border-slate-700 hover:border-blue-500/50 transition text-center">
+                    <div class="text-2xl mb-2">💼</div>
+                    <p class="font-semibold text-blue-300">WACC Calculator</p>
+                </a>
+                <a href="/blogs/" class="bg-slate-900/50 hover:bg-slate-900/80 rounded-lg p-4 border border-slate-700 hover:border-blue-500/50 transition text-center">
+                    <div class="text-2xl mb-2">📚</div>
+                    <p class="font-semibold text-blue-300">Blog Posts</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Connect Section -->
+        <div class="glass-effect rounded-2xl p-8 mb-8">
+            <h2 class="text-2xl font-bold text-blue-400 mb-6 flex items-center gap-3">
+                <span class="h-px w-8 bg-blue-400"></span> Connect With Prajwal
+            </h2>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="https://linkedin.com/in/prajwalshresthaaa" target="_blank" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition font-semibold">LinkedIn</a>
+                <a href="https://youtube.com/@Prajwalshresthaa" target="_blank" class="px-6 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition font-semibold">YouTube</a>
+                <a href="https://facebook.com/prajwalshrestha" target="_blank" class="px-6 py-2 bg-blue-700 hover:bg-blue-800 rounded-lg transition font-semibold">Facebook</a>
+                <a href="mailto:hello@prajwalshrestha2.com.np" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition font-semibold">Email</a>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <button onclick="goToHomePage()" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition">
+                ← Go Back Home
+            </button>
+            <button onclick="viewAboutPage()" class="bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 px-8 rounded-lg transition">
+                📖 Read Full Bio
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-12 text-center text-slate-600 text-sm">
+            <p>© Prajwal Shrestha 2026 | All Rights Reserved</p>
+        </div>
+    </div>
+
+    <script>
+        // Override to force OFFLINE state for demo (set to false to see offline state)
+        const DEMO_OFFLINE_MODE = false;
+        
+        function goToHomePage() {
+            window.location.href = '/';
+        }
+
+        function viewAboutPage() {
+            window.location.href = '/about/';
+        }
+
+        // Get the last page before going offline
+        function getLastPage() {
+            const lastPage = localStorage.getItem('lastPageBeforeOffline');
+            return lastPage || '/';  // Default to home if no last page stored
+        }
+
+        // Redirect to the last page before offline or home
+        function redirectToLastPage() {
+            const lastPage = getLastPage();
+            console.log('Redirecting to last page:', lastPage);
+            window.location.href = lastPage;
+        }
+
+        // Update connection status dynamically
+        const updateStatus = () => {
+            const statusEl = document.getElementById('status-indicator');
+            const messageEl = document.getElementById('status-message');
+            
+            // Use demo mode if enabled, otherwise use actual navigator.onLine
+            const isOnline = DEMO_OFFLINE_MODE ? false : navigator.onLine;
+            
+            if (isOnline) {
+                // Online state - redirect after a short delay
+                if (statusEl) {
+                    statusEl.textContent = '🟢 Currently Online';
+                    statusEl.classList.remove('text-red-400');
+                    statusEl.classList.add('text-green-400');
+                }
+                if (messageEl) {
+                    messageEl.textContent = 'Connection restored! Redirecting...';
+                    messageEl.classList.remove('text-slate-500');
+                    messageEl.classList.add('text-green-500');
+                }
+                console.log('Status: Online - Preparing redirect');
+                
+                // Redirect after 1 second to allow user to see the status change
+                setTimeout(() => {
+                    redirectToLastPage();
+                }, 1000);
+            } else {
+                // Offline state
+                if (statusEl) {
+                    statusEl.textContent = '🔴 Currently Offline';
+                    statusEl.classList.remove('text-green-400');
+                    statusEl.classList.add('text-red-400');
+                }
+                if (messageEl) {
+                    messageEl.textContent = 'Waiting for internet connection to restore...';
+                    messageEl.classList.remove('text-green-500');
+                    messageEl.classList.add('text-slate-500');
+                }
+                console.log('Status: Offline');
+            }
+        };
+
+        // Check status on page load
+        window.addEventListener('load', updateStatus);
+
+        // Listen for online event
+        window.addEventListener('online', function() {
+            console.log('Connection restored!');
+            updateStatus();
+        });
+
+        // Listen for offline event
+        window.addEventListener('offline', function() {
+            console.log('Connection lost');
+            updateStatus();
+        });
+
+        // Periodic check for connection (every 3 seconds)
+        setInterval(() => {
+            if (navigator.onLine) {
+                console.log('Connection detected via periodic check');
+                window.dispatchEvent(new Event('online'));
+            }
+        }, 3000);
+
+        // Initial status check
+        setTimeout(updateStatus, 100);
+    </script>
+</body>
+</html>

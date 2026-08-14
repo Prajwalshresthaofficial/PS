@@ -61,6 +61,7 @@
   ]
 }
 </script>
+    <script src="/offline-detection.js"></script>
 </head>
 <body>
     <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading site">
@@ -99,10 +100,11 @@
     <section class="py-40 max-w-6xl mx-auto px-6 animated-fade-in animate-delay-1">
         <div class="flex flex-col md:flex-row items-center gap-12">
             
-            <div class="w-full max-w-sm mx-auto md:mx-0 md:w-80 shrink-0 order-first md:order-none animated-zoom-in animate-delay-2">
+            <div class="w-full max-w-xs sm:max-w-sm mx-auto md:mx-0 md:w-80 shrink-0 order-first md:order-none animated-zoom-in animate-delay-2">
                 <div class="relative group photo-animate">
-                    <div class="absolute -inset-1 bg-blue-500/20 rounded-3xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
-                    <div class="relative aspect-square rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 rounded-3xl blur opacity-75 group-hover:opacity-100 transition duration-500 animate-border-pulse"></div>
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-50 transition duration-500 animate-border-rotate"></div>
+                    <div class="relative aspect-square rounded-2xl overflow-hidden border-2 border-blue-400/50 shadow-2xl group-hover:shadow-blue-500/50 transition-all duration-500">
                         <img src="picture1.jpg" alt="Prajwal Shrestha" class="w-full h-full object-cover transition duration-700 scale-105 hover:scale-100">
                     </div>
                 </div>
@@ -110,21 +112,90 @@
 
             <div class="flex-1 space-y-6 md:order-last order-none animated-slide-up animate-delay-3">
                 <h2 class="text-3xl font-bold text-blue-400 flex items-center gap-4 animated-fade-in animate-delay-4">
-                    <span class="h-px w-12 bg-blue-400"></span> About Me
+                    <span class="h-px w-12 bg-blue-400 transition-all duration-500 group-hover:w-24"></span> About Me
                 </h2>
-                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-5">
+                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-5 scroll-reveal">
                     My name is Prajwal Shrestha, and I am a dedicated CA aspirant under the Institute of Chartered Accountants of Nepal (ICAN). With a strong interest in accounting, finance, and business, I am committed to building a solid foundation in professional ethics, analytical thinking, and financial expertise.
                 </p>
-                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-6">
+                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-6 scroll-reveal">
                     I am currently pursuing my journey toward becoming a Chartered Accountant, focusing on continuous learning, discipline, and consistency. My goal is not only to excel academically but also to develop practical skills that will enable me to contribute effectively in the corporate and financial sectors.
                 </p>
-                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-4">
+                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-4 scroll-reveal">
                     Driven by ambition and a passion for excellence, I strive to grow both personally and professionally as I progress in the field of accountancy.
                 </p>
             </div>
 
             
 
+        </div>
+    </section>
+
+    <section class="pt-0 pb-8 max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-blue-400 flex items-center gap-4 mb-16 animated-fade-in animate-delay-1 relative inline-block">
+            <span class="h-px w-12 bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-500 hover:w-24"></span> 
+            <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent animate-pulse hover:bg-left hover:transition-all">Academic Timeline</span>
+        </h2>
+        
+        <div class="space-y-0 relative timeline-container">
+            <!-- Vertical Timeline Line -->
+            <div class="absolute left-1.5 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-cyan-400 to-blue-600 timeline-line"></div>
+            
+            <!-- Timeline Item 1 -->
+            <div class="relative pl-12 mb-12 timeline-item animated-slide-up animate-delay-2 group/item">
+                <div class="absolute left-0 top-3 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-950 timeline-dot pulse-dot transform group-hover/item:scale-125 transition-transform duration-300"></div>
+                <div class="glass-card border border-slate-700 p-8 rounded-xl hover:border-blue-400 transition-all duration-500 timeline-card hover:shadow-lg hover:shadow-blue-500/20 group transform hover:scale-105 hover:-translate-y-1">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="text-sm sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-2 group-hover:to-blue-200 transition-all">Siddhartha Shishu Sadan</h3>
+                            <p class="text-slate-400 text-sm">Biratnagar</p>
+                        </div>
+                        <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap animate-fade-in-badge">School</span>
+                    </div>
+                    <div class="h-px bg-gradient-to-r from-blue-500/50 to-transparent my-4"></div>
+                    <p class="text-slate-300 font-semibold flex items-center gap-2 timeline-date">
+                        <span class="text-blue-400 text-lg">📅</span>
+                        <span>2080</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="relative pl-12 mb-12 timeline-item animated-slide-up animate-delay-3 group/item">
+                <div class="absolute left-0 top-3 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-950 timeline-dot pulse-dot transform group-hover/item:scale-125 transition-transform duration-300"></div>
+                <div class="glass-card border border-slate-700 p-8 rounded-xl hover:border-cyan-400 transition-all duration-500 timeline-card hover:shadow-lg hover:shadow-cyan-500/20 group transform hover:scale-105 hover:-translate-y-1">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="text-sm sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-2 group-hover:to-blue-200 transition-all">Everest College</h3>
+                            <p class="text-slate-400 text-sm">Biratnagar</p>
+                        </div>
+                        <span class="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap animate-fade-in-badge">High School</span>
+                    </div>
+                    <div class="h-px bg-gradient-to-r from-cyan-500/50 to-transparent my-4"></div>
+                    <p class="text-slate-300 font-semibold flex items-center gap-2 timeline-date">
+                        <span class="text-cyan-400 text-lg">📅</span>
+                        <span>2081-82</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="relative pl-12 timeline-item animated-slide-up animate-delay-4 group/item">
+                <div class="absolute left-0 top-3 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-950 timeline-dot pulse-dot timeline-dot-active transform group-hover/item:scale-125 transition-transform duration-300"></div>
+                <div class="glass-card border border-slate-700 p-8 rounded-xl hover:border-blue-400 transition-all duration-500 timeline-card hover:shadow-lg hover:shadow-blue-500/30 group transform hover:scale-105 hover:-translate-y-1 ring-1 ring-blue-500/20">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="text-sm sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-2 group-hover:to-blue-200 transition-all">Gurukul CA / Tribhuwan University</h3>
+                            <p class="text-slate-400 text-sm">Kathmandu</p>
+                        </div>
+                        <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap animate-pulse animate-fade-in-badge">Current</span>
+                    </div>
+                    <div class="h-px bg-gradient-to-r from-blue-500/50 to-transparent my-4"></div>
+                    <p class="text-slate-300 font-semibold flex items-center gap-2 timeline-date">
+                        <span class="text-green-400 text-lg">📅</span>
+                        <span>2082 - Present</span>
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -162,6 +233,146 @@
             setTimeout(function () {
                 loader.remove();
             }, 650);
+        });
+
+        // Advanced Desktop Animations & Interactions
+        document.addEventListener('DOMContentLoaded', function () {
+            const isMobile = window.innerWidth < 768;
+            
+            if (!isMobile) {
+                // Scroll-triggered animations using Intersection Observer
+                const observerOptions = {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const delay = entry.target.getAttribute('data-delay') || '0';
+                            entry.target.style.animationDelay = delay + 'ms';
+                            entry.target.classList.add('revealed');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all animated elements
+                document.querySelectorAll('.animated-fade-in, .animated-zoom-in, .animated-slide-up, .about-paragraph, .timeline-item').forEach(function(el) {
+                    observer.observe(el);
+                });
+
+                // Timeline dot animation
+                const timelineDots = document.querySelectorAll('.timeline-dot');
+                timelineDots.forEach(function(dot, index) {
+                    dot.style.animationDelay = (index * 0.2) + 's';
+                });
+
+                // Mouse-tracking parallax effect for desktop
+                const photoSection = document.querySelector('.photo-animate');
+                if (photoSection) {
+                    document.addEventListener('mousemove', function(e) {
+                        const x = (e.clientX / window.innerWidth) * 20 - 10;
+                        const y = (e.clientY / window.innerHeight) * 20 - 10;
+                        photoSection.style.transform = `perspective(1000px) rotateY(${x * 0.3}deg) rotateX(${-y * 0.3}deg)`;
+                    });
+
+                    // Reset on mouse leave
+                    document.addEventListener('mouseleave', function() {
+                        photoSection.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+                    });
+                }
+
+                // Smooth scroll reveal with stagger
+                const staggerElements = document.querySelectorAll('.timeline-card');
+                staggerElements.forEach(function(el, index) {
+                    el.style.setProperty('--stagger', index * 0.1);
+                });
+
+                // Text gradient animation on heading hover
+                const headings = document.querySelectorAll('h2');
+                headings.forEach(function(heading) {
+                    heading.addEventListener('mouseenter', function() {
+                        this.style.backgroundPosition = '0% 50%';
+                    });
+                });
+
+                // Enhanced form input animations
+                const inputs = document.querySelectorAll('.input-field');
+                inputs.forEach(function(input) {
+                    input.addEventListener('focus', function() {
+                        this.style.transform = 'translateY(-4px) scale(1.01)';
+                    });
+
+                    input.addEventListener('blur', function() {
+                        this.style.transform = 'translateY(0) scale(1)';
+                    });
+                });
+
+                // Animated badge pulse on scroll
+                const badges = document.querySelectorAll('[class*="animate-fade-in-badge"]');
+                badges.forEach(function(badge, index) {
+                    badge.style.animationDelay = (index * 0.1 + 0.2) + 's';
+                });
+
+                // Card shimmer effect on hover
+                const glassCards = document.querySelectorAll('.glass-card');
+                glassCards.forEach(function(card) {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.backgroundPosition = '0% 50%';
+                    });
+
+                    card.addEventListener('mouseleave', function() {
+                        this.style.backgroundPosition = '100% 50%';
+                    });
+                });
+
+                // Parallax scrolling effect
+                let ticking = false;
+                window.addEventListener('scroll', function() {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            const scrolled = window.pageYOffset;
+                            const elements = document.querySelectorAll('[data-parallax]');
+                            
+                            elements.forEach(function(el) {
+                                const speed = el.getAttribute('data-parallax') || 0.5;
+                                el.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
+                            });
+
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+
+                // Add scroll-reveal class dynamically
+                const revealElements = document.querySelectorAll('.about-paragraph');
+                revealElements.forEach(function(el) {
+                    if (!el.classList.contains('scroll-reveal')) {
+                        el.classList.add('scroll-reveal');
+                    }
+                });
+
+                // Animated counter for timeline items
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                let lastScrollTop = 0;
+
+                window.addEventListener('scroll', function() {
+                    const scrollTop = window.scrollY;
+                    
+                    timelineItems.forEach(function(item) {
+                        const rect = item.getBoundingClientRect();
+                        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                        
+                        if (isVisible && scrollTop > lastScrollTop) {
+                            item.style.opacity = Math.min(1, (window.innerHeight - rect.top) / window.innerHeight);
+                        }
+                    });
+
+                    lastScrollTop = scrollTop;
+                });
+            }
         });
     </script>
 </body>
