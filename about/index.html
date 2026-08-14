@@ -62,6 +62,7 @@
 }
 </script>
     <script src="/offline-detection.js"></script>
+    <script src="/register-sw.js"></script>
 </head>
 <body>
     <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading site">
@@ -112,15 +113,15 @@
 
             <div class="flex-1 space-y-6 md:order-last order-none animated-slide-up animate-delay-3">
                 <h2 class="text-3xl font-bold text-blue-400 flex items-center gap-4 animated-fade-in animate-delay-4">
-                    <span class="h-px w-12 bg-blue-400 transition-all duration-500 group-hover:w-24"></span> About Me
+                    <span class="h-px w-12 bg-blue-400"></span> About Me
                 </h2>
-                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-5 scroll-reveal">
+                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-5">
                     My name is Prajwal Shrestha, and I am a dedicated CA aspirant under the Institute of Chartered Accountants of Nepal (ICAN). With a strong interest in accounting, finance, and business, I am committed to building a solid foundation in professional ethics, analytical thinking, and financial expertise.
                 </p>
-                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-6 scroll-reveal">
+                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-6">
                     I am currently pursuing my journey toward becoming a Chartered Accountant, focusing on continuous learning, discipline, and consistency. My goal is not only to excel academically but also to develop practical skills that will enable me to contribute effectively in the corporate and financial sectors.
                 </p>
-                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-4 scroll-reveal">
+                <p class="about-paragraph text-slate-400 text-lg md:text-xl leading-relaxed animated-fade-in animate-delay-4">
                     Driven by ambition and a passion for excellence, I strive to grow both personally and professionally as I progress in the field of accountancy.
                 </p>
             </div>
@@ -131,9 +132,8 @@
     </section>
 
     <section class="pt-0 pb-8 max-w-6xl mx-auto px-6">
-        <h2 class="text-4xl font-bold text-blue-400 flex items-center gap-4 mb-16 animated-fade-in animate-delay-1 relative inline-block">
-            <span class="h-px w-12 bg-gradient-to-r from-blue-400 to-cyan-400 transition-all duration-500 hover:w-24"></span> 
-            <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent animate-pulse hover:bg-left hover:transition-all">Academic Timeline</span>
+        <h2 class="text-4xl font-bold text-blue-400 flex items-center gap-4 mb-16 animated-fade-in animate-delay-1">
+            <span class="h-px w-12 bg-gradient-to-r from-blue-400 to-cyan-400"></span> Academic Timeline
         </h2>
         
         <div class="space-y-0 relative timeline-container">
@@ -222,6 +222,109 @@
                 menu.classList.add('hidden');
             });
         });
+
+        // Desktop-only enhancements (768px and above)
+        // This prevents lag on mobile devices
+        if (window.innerWidth >= 768) {
+            // Parallax mouse tracking for profile photo
+            const photoAnimate = document.querySelector('.photo-animate');
+            let ticking = false;
+            
+            if (photoAnimate) {
+                document.addEventListener('mousemove', function(e) {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            const x = (e.clientX / window.innerWidth) * 15 - 7.5;
+                            const y = (e.clientY / window.innerHeight) * 15 - 7.5;
+                            photoAnimate.style.transform = `perspective(1000px) rotateX(${y * 0.2}deg) rotateY(${x * 0.2}deg)`;
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+
+                document.addEventListener('mouseleave', function() {
+                    photoAnimate.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                });
+            }
+
+            // Smooth scroll-triggered animations using Intersection Observer
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        // Add smooth fade-in class
+                        entry.target.classList.add('animate-in');
+                        // Unobserve to prevent repeated animations
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all timeline items and paragraphs
+            document.querySelectorAll('.timeline-item, .about-paragraph').forEach(function(el) {
+                observer.observe(el);
+            });
+
+            // Smooth parallax scroll effect
+            let scrollTicking = false;
+            window.addEventListener('scroll', function() {
+                if (!scrollTicking) {
+                    window.requestAnimationFrame(function() {
+                        // Subtle parallax on background
+                        const scrolled = window.pageYOffset;
+                        const parallaxElements = document.querySelectorAll('[data-scroll-parallax]');
+                        
+                        parallaxElements.forEach(function(el) {
+                            const speed = el.getAttribute('data-scroll-parallax') || 0.5;
+                            el.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
+                        });
+
+                        scrollTicking = false;
+                    });
+                    scrollTicking = true;
+                }
+            }, { passive: true });
+
+            // Smooth scroll to anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && document.querySelector(href)) {
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        } else {
+            // Mobile optimization: Remove animation classes
+            document.querySelectorAll('.timeline-item, .about-paragraph').forEach(function(el) {
+                el.classList.remove('animated-fade-in', 'animated-zoom-in', 'animated-slide-up');
+                el.style.opacity = '1';
+                el.style.animation = 'none';
+            });
+
+            // Mobile smooth scroll on anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && document.querySelector(href)) {
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
     });
 </script>
 
@@ -233,146 +336,6 @@
             setTimeout(function () {
                 loader.remove();
             }, 650);
-        });
-
-        // Advanced Desktop Animations & Interactions
-        document.addEventListener('DOMContentLoaded', function () {
-            const isMobile = window.innerWidth < 768;
-            
-            if (!isMobile) {
-                // Scroll-triggered animations using Intersection Observer
-                const observerOptions = {
-                    threshold: 0.2,
-                    rootMargin: '0px 0px -50px 0px'
-                };
-
-                const observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            const delay = entry.target.getAttribute('data-delay') || '0';
-                            entry.target.style.animationDelay = delay + 'ms';
-                            entry.target.classList.add('revealed');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                // Observe all animated elements
-                document.querySelectorAll('.animated-fade-in, .animated-zoom-in, .animated-slide-up, .about-paragraph, .timeline-item').forEach(function(el) {
-                    observer.observe(el);
-                });
-
-                // Timeline dot animation
-                const timelineDots = document.querySelectorAll('.timeline-dot');
-                timelineDots.forEach(function(dot, index) {
-                    dot.style.animationDelay = (index * 0.2) + 's';
-                });
-
-                // Mouse-tracking parallax effect for desktop
-                const photoSection = document.querySelector('.photo-animate');
-                if (photoSection) {
-                    document.addEventListener('mousemove', function(e) {
-                        const x = (e.clientX / window.innerWidth) * 20 - 10;
-                        const y = (e.clientY / window.innerHeight) * 20 - 10;
-                        photoSection.style.transform = `perspective(1000px) rotateY(${x * 0.3}deg) rotateX(${-y * 0.3}deg)`;
-                    });
-
-                    // Reset on mouse leave
-                    document.addEventListener('mouseleave', function() {
-                        photoSection.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-                    });
-                }
-
-                // Smooth scroll reveal with stagger
-                const staggerElements = document.querySelectorAll('.timeline-card');
-                staggerElements.forEach(function(el, index) {
-                    el.style.setProperty('--stagger', index * 0.1);
-                });
-
-                // Text gradient animation on heading hover
-                const headings = document.querySelectorAll('h2');
-                headings.forEach(function(heading) {
-                    heading.addEventListener('mouseenter', function() {
-                        this.style.backgroundPosition = '0% 50%';
-                    });
-                });
-
-                // Enhanced form input animations
-                const inputs = document.querySelectorAll('.input-field');
-                inputs.forEach(function(input) {
-                    input.addEventListener('focus', function() {
-                        this.style.transform = 'translateY(-4px) scale(1.01)';
-                    });
-
-                    input.addEventListener('blur', function() {
-                        this.style.transform = 'translateY(0) scale(1)';
-                    });
-                });
-
-                // Animated badge pulse on scroll
-                const badges = document.querySelectorAll('[class*="animate-fade-in-badge"]');
-                badges.forEach(function(badge, index) {
-                    badge.style.animationDelay = (index * 0.1 + 0.2) + 's';
-                });
-
-                // Card shimmer effect on hover
-                const glassCards = document.querySelectorAll('.glass-card');
-                glassCards.forEach(function(card) {
-                    card.addEventListener('mouseenter', function() {
-                        this.style.backgroundPosition = '0% 50%';
-                    });
-
-                    card.addEventListener('mouseleave', function() {
-                        this.style.backgroundPosition = '100% 50%';
-                    });
-                });
-
-                // Parallax scrolling effect
-                let ticking = false;
-                window.addEventListener('scroll', function() {
-                    if (!ticking) {
-                        window.requestAnimationFrame(function() {
-                            const scrolled = window.pageYOffset;
-                            const elements = document.querySelectorAll('[data-parallax]');
-                            
-                            elements.forEach(function(el) {
-                                const speed = el.getAttribute('data-parallax') || 0.5;
-                                el.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
-                            });
-
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                });
-
-                // Add scroll-reveal class dynamically
-                const revealElements = document.querySelectorAll('.about-paragraph');
-                revealElements.forEach(function(el) {
-                    if (!el.classList.contains('scroll-reveal')) {
-                        el.classList.add('scroll-reveal');
-                    }
-                });
-
-                // Animated counter for timeline items
-                const timelineItems = document.querySelectorAll('.timeline-item');
-                let lastScrollTop = 0;
-
-                window.addEventListener('scroll', function() {
-                    const scrollTop = window.scrollY;
-                    
-                    timelineItems.forEach(function(item) {
-                        const rect = item.getBoundingClientRect();
-                        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                        
-                        if (isVisible && scrollTop > lastScrollTop) {
-                            item.style.opacity = Math.min(1, (window.innerHeight - rect.top) / window.innerHeight);
-                        }
-                    });
-
-                    lastScrollTop = scrollTop;
-                });
-            }
         });
     </script>
 </body>
