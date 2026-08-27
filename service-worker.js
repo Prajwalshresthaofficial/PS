@@ -3,6 +3,7 @@ const OFFLINE_PAGE = '/offline.html';
 
 // Assets to cache on install
 const STATIC_ASSETS = [
+  '/offline.html',
   '/',
   '/index.html',
   '/about/index.html',
@@ -76,7 +77,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - serve from cache, fallback to offline page
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
@@ -89,18 +90,36 @@ self.addEventListener('fetch', (event) => {
   // For navigation requests (HTML pages)
   if (request.mode === 'navigate') {
     event.respondWith(
-      caches.match(request).then((response) => {
-        // Try network first for fresh content
-        return fetch(request).catch(() => {
-          // If network fails, use cached version
-          return response || caches.match(OFFLINE_PAGE);
-        });
-      })
+      // Try network first for fresh content
+      fetch(request)
+        .then((response) => {
+          // If network is successful, return the response
+          if (response.ok) {
+            return response;
+          }
+          // If network returned an error, try cache
+          return caches.match(request).then((cachedResponse) => {
+            return cachedResponse || caches.match(OFFLINE_PAGE);
+          });
+        })
+        .catch(() => {
+          // Network is down/failed - show offline page or cached version
+          return caches.match(request).then((cachedResponse) => {
+            // If page is cached, show it with a notification
+            if (cachedResponse) {
+              return cachedResponse;
+            }
+            // If page is not cached, show offline page
+            return caches.match(OFFLINE_PAGE).then((offlinePage) => {
+              return offlinePage || new Response('You are offline', { status: 503 });
+            });
+          });
+        })
     );
     return;
   }
 
-  // For other requests (CSS, JS, images)
+  // For other requests (CSS, JS, images) - Cache first strategy
   event.respondWith(
     caches.match(request).then((response) => {
       if (response) {
@@ -119,7 +138,9 @@ self.addEventListener('fetch', (event) => {
       }).catch(() => {
         // Fallback for failed requests
         if (request.destination === 'image') {
-          return caches.match('/fav.png');
+          return caches.match('/fav.png').then((res) => {
+            return res || new Response('Image not available', { status: 503 });
+          });
         }
         return new Response('Offline - Resource not available', { status: 503 });
       });

@@ -82,6 +82,12 @@ footer {
     font-weight: 700;
 }
 
+nav .nav-link::after,
+nav .nav-link:hover::after {
+    content: none !important;
+    display: none !important;
+}
+
 .contact-skeleton .skeleton-nav-shell {
     top: 1rem;
 }

@@ -476,6 +476,12 @@ nav .max-w-6xl > span {
 
 }
 
+nav .nav-link::after,
+nav .nav-link:hover::after {
+    content: none !important;
+    display: none !important;
+}
+
 
 
 /* =========================
